@@ -16,11 +16,6 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post = Post.new(post_params)
-
-    # @post.avatar.attach(params[:post][:image])
-
-    # @post.image = url_for(@post.avatar)
-
     if @post.save
       render json: @post, status: :created, location: @post
     else
