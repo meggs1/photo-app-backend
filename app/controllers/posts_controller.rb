@@ -17,6 +17,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
+    # @post.avatar.attach(params[:post][:image])
+
+    # @post.image = url_for(@post.avatar)
+
     if @post.save
       render json: @post, status: :created, location: @post
     else
@@ -46,6 +50,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:caption, :image, :user_id)
+      params.require(:post).permit(:caption, :image, :user_id, :image_file)
     end
 end
